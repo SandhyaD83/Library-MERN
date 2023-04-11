@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/SandhyaD83/Library-MERN/issues"
   },
-  "homepage": "https://github.com/SandhyaD83/Library-MERN#readme"
+  "homepage": "https://github.com/SandhyaD83/Library-MERN#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
