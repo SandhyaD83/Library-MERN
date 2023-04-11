@@ -4,11 +4,7 @@ exports.getBooks = async (req, res) => {
         res.send({ allBooks })
     })
 }
-exports.getNew = async (req, res) => {
 
-    res.send('New')
-
-}
 exports.createBooks = async (req, res) => {
     Book.create([
         {
