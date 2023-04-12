@@ -10,19 +10,30 @@ function App() {
       const data = await response.json();
 
       console.log(data)
-      setBook(data);
+      setBook(data.allBooks);
 
     }
-    catch (e) {
-      console.error(e)
+    catch (error) {
+      console.error(error)
     }
   }
   useEffect(() => {
     getBook();
   }, []);
+  const books = book.map((b) => {
+    return (
+      <div>
+        <h1>{b.name}</h1>
+        <h2>{b.author}</h2>
+        <img src={b.image} alt={b.name} />
+        <h2>{b.price}</h2>
+        <hr />
+      </div>
+    )
+  })
   return (
     <div className="App">
-      {book}
+      {books}
     </div>
   );
 }
