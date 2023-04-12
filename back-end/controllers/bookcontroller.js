@@ -1,7 +1,9 @@
 const Book = require('../models/book.js')
 exports.getBooks = async (req, res) => {
     Book.find({}, (error, allBooks) => {
-        res.send({ allBooks })
+        res.status(200).json({
+            allBooks
+        })
     })
 }
 
