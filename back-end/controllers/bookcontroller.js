@@ -7,7 +7,21 @@ exports.getBooks = async (req, res) => {
         })
     })
 }
-
+exports.createAuthor = async (req, res) => {
+    Author.create([{
+        firstName: 'Philip',
+        lastName: 'Roth'
+    },
+    {
+        firstName: 'Elwyn Brooks',
+        lastName: 'White'
+    },
+    {
+        firstName: 'Peter ',
+        lastName: 'S. Beagle'
+    },
+    ])
+}
 exports.createBooks = async (req, res) => {
     Book.create([
         {
