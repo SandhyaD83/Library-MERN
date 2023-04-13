@@ -8,7 +8,7 @@ function BookDisplay(props) {
             <div className="item" >
                 <div >
                     <h1>{b.name}</h1>
-                    <h2>{b.authorFirstName}</h2>
+                    <h2>{b.author.firstName} {b.author.lastName}</h2>
                     <img src={b.image} alt={b.name} />
                     <h2>{b.price}</h2>
                 </div>

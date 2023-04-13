@@ -5,7 +5,7 @@ exports.getBooks = async (req, res) => {
         const allBooks = await Book.find({}).populate('author').exec();
         const books = allBooks.map(book => ({
             name: book.name,
-            authorFirstName: book.author,
+            author: book.author,
             image: book.image,
             desc: book.desc,
             price: book.price,
