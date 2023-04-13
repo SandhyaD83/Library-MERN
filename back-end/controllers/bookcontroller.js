@@ -9,7 +9,7 @@ exports.getBooks = async (req, res) => {
             image: book.image,
             desc: book.desc,
             price: book.price,
-            available: book.available
+            available: book.available ? 'Available' : 'Not available'
         }));
 
         res.send({
