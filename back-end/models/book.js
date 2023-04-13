@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-// const mongodb = require('mongodb');
-// const ObjectId = mongodb.ObjectId
+
 const Schema = mongoose.Schema;
 const bookSchema = new Schema({
     name: { type: String, required: true },

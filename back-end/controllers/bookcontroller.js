@@ -1,12 +1,28 @@
 const Book = require('../models/book.js')
 const Author = require('../models/author.js')
 exports.getBooks = async (req, res) => {
-    Book.find({}, (error, allBooks) => {
+    try {
+        const allBooks = await Book.find({}).populate('author').exec();
+        const books = allBooks.map(book => ({
+            name: book.name,
+            authorFirstName: book.author.firstName,
+            image: book.image,
+            desc: book.desc,
+            price: book.price,
+            available: book.available
+        }));
+
         res.send({
-            allBooks
-        })
-    })
+            books
+        });
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).send({ error: 'Error fetching books.' });
+    }
 }
+
+
 exports.getAuthors = async (req, res) => {
     Author.find({}, (error, allauthors) => {
         res.send({
