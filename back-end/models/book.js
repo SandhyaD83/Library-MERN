@@ -12,7 +12,7 @@ const bookSchema = new Schema({
     price: { type: String, required: true },
     available: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Author'
+        ref: 'BookStatus'
     }
 });
 
