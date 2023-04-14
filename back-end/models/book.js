@@ -10,7 +10,10 @@ const bookSchema = new Schema({
     image: { type: String, required: true },
     desc: { type: String, required: true },
     price: { type: String, required: true },
-    available: { type: Boolean }
+    available: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Author'
+    }
 });
 
 
