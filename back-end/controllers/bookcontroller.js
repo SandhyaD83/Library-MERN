@@ -68,6 +68,7 @@ exports.createAuthor = async (req, res) => {
         res.redirect('/books/authors');
     })
 }
+
 exports.createBooks = async (req, res) => {
     const authors = await Author.find({})
     console.log(authors)
