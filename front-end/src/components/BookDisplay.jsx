@@ -12,7 +12,7 @@ function BookDisplay(props) {
                     <img src={b.image} alt={b.name} />
                     <p>{b.desc}</p>
                     <h2>{b.price}</h2>
-                    <h3>{b.available}</h3>
+                    {b.available.status > 0 ? (<h3>Available</h3>) : (<h3>Not available</h3>)}
                 </div>
             </div>
         )
