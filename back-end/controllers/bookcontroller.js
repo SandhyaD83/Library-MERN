@@ -1,5 +1,7 @@
 const Book = require('../models/book.js')
-const Author = require('../models/author.js')
+const Author = require('../models/author.js');
+const BookStatus = require('../models/bookInstance.js');
+
 exports.getBooks = async (req, res) => {
     try {
         const allBooks = await Book.find({}).populate('author').exec();
@@ -29,6 +31,21 @@ exports.getAuthors = async (req, res) => {
             allauthors
         })
     })
+}
+exports.createStatus = async (req, res) => {
+    BookStatus.create([{
+        name: "Letting Go",
+        status: 2
+    },
+    {
+        name: "Charlotte's Web",
+        status: 3
+    },
+    {
+        name: "The Last Unicorn",
+        status: 1
+    },
+    ])
 }
 exports.createAuthor = async (req, res) => {
     Author.create([{
