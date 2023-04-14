@@ -4,7 +4,8 @@ const BookStatus = require('../models/bookInstance.js');
 
 exports.getBooks = async (req, res) => {
     try {
-        const allBooks = await Book.find({}).populate('author').exec();
+        const allBooks = await Book.find({}).populate('author').populate('status').exec();
+
         const books = allBooks.map(book => ({
             name: book.name,
             author: book.author,
@@ -69,7 +70,7 @@ exports.createAuthor = async (req, res) => {
 }
 exports.createBooks = async (req, res) => {
     const authors = await Author.find({})
-    authors.find(author => author.books.includes('Letting Go'));
+    const status = await BookStatus.find({})
     Book.create([
         {
             name: 'Letting Go',
@@ -77,7 +78,7 @@ exports.createBooks = async (req, res) => {
             image: 'https://upload.wikimedia.org/wikipedia/en/b/b1/Letting_Go_%28novel%29_1st_edition_cover.jpg',
             desc: `The first full-length novel from one of the most renowned writers of the twentieth century, the Pulitzer Prize winning author of American Pastoral, tells the story of a mid-century America and offers “further proof of Mr. Roth's astonishing talent…. Letting Go seethes with life” (The New York Times).`,
             price: '$12.00',
-            available: true
+            available: status.find(status => status.name == 'Letting Go')._id
         },
         {
             name: "Charlotte's Web",
@@ -85,7 +86,7 @@ exports.createBooks = async (req, res) => {
             image: 'https://embed.cdn.pais.scholastic.com/v1/channels/tso/products/identifiers/isbn/9780590302715/primary/renditions/700',
             desc: `This is the story of a little girl named Fern who loved a little pig named Wilbur and of Wilbur's dear friend, Charlotte A. Cavatica, a beautiful large grey spider. With the unlikely help of Templeton the rat, and a wonderfully clever plan of her own, Charlotte saves the life of Wilbur, who by this time has grown up to be quite a pig. A time-honoured classic favourite.`,
             price: '$10.00',
-            available: true
+            available: status.find(status => status.name == 'Charlotte's Web')._id
         },
         {
             name: 'The Last Unicorn',
@@ -93,7 +94,7 @@ exports.createBooks = async (req, res) => {
             image: 'https://epiloguebookcafe.com/wp-content/uploads/2020/03/last-unicorns.jpg',
             desc: `The unicorn had lived since before memory in a forest where death could touch nothing. Maidens who caught a glimpse of her glory were blessed by enchantment they would never forget. But outside her wondrous realm, dark whispers and rumours carried a message she could not ignore: "Unicorns are gone from the world."`,
             price: '$15.00',
-            available: false
+            available: status.find(status => status.name == 'The Last Unicorn')._id
         }
     ], (err, data) => {
         res.redirect('/books');
