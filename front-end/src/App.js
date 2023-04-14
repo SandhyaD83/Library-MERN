@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import BookDisplay from './components/BookDisplay';
+import Login from './components/Login';
 
 function App() {
   const [books, setBooks] = useState([])
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <Login />
       <BookDisplay books={books} />
     </div>
   );
