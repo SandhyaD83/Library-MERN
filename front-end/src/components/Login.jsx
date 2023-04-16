@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-function Login() {
+function Login(props) {
     const [name, setName] = useState('')
     const [pwd, setPwd] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        props.onClick(name)
     }
     return (
         <div><form onSubmit={handleSubmit}>

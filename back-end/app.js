@@ -8,7 +8,11 @@ const cors = require('cors');
 app.use(cors());
 
 const port = 3000
-
+app.use(express.urlencoded({ extended: false }));
+app.use((req, res, next) => {
+    console.log('I run for all routes');
+    next();
+});
 app.use("/books", router)
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGO_URI, {
