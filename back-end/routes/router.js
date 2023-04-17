@@ -6,7 +6,7 @@ router.get('/', getBooks)
 
 router.post('/author', createAuthor)
 router.get('/authors', getAuthors)
-router.get('/status', createStatus)
+router.post('/status', createStatus)
 router.post('/post', createBooks)
 router.put('/updateBook/:name', updateBook)
 router.delete('/del/:name', deleteBook)
