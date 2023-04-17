@@ -7,7 +7,7 @@ router.get('/', getBooks)
 router.get('/author', createAuthor)
 router.get('/authors', getAuthors)
 router.get('/status', createStatus)
-router.post('/postdata', createBooks)
+router.post('/post', createBooks)
 
 
 module.exports = router;
