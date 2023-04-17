@@ -4,11 +4,11 @@ const BookStatus = require('../models/bookInstance.js');
 
 exports.getBooks = async (req, res) => {
     try {
-        const allBooks = await Book.find({})
+        const allBooks = await Book.find({}).populate('author').exec();
 
         const books = allBooks.map(book => ({
             name: book.name,
-            // author: book.author,
+            author: book.author,
             image: book.image,
             desc: book.desc,
             price: book.price,
@@ -56,10 +56,11 @@ exports.createAuthor = async (req, res) => {
 }
 
 exports.createBooks = async (req, res) => {
-
+    const authors = await Author.find({})
     const data = new Book(
         {
             name: req.body.name,
+            author: authors.find(author => author.books.includes(req.body.name))._id,
             image: req.body.image,
             desc: req.body.desc,
             price: req.body.price,
@@ -69,4 +70,35 @@ exports.createBooks = async (req, res) => {
     console.log(data)
     const val = await data.save()
     res.json(val)
+}
+exports.updateBook = async (req, res) => {
+
+    let upname = req.params.name;
+    let upauthor = req.body.author;
+    let updesc = req.body.desc;
+    let upprice = req.body.price;
+    let upcopies = req.body.copies;
+    Book.findOneAndUpdate({ name: upname }, {
+        $set: {
+            name: upname
+            , author: upauthor, desc: updesc, price: upprice, copies: upcopies
+        }
+    }, { new: true }, (err, data) => {
+        if (err) {
+            res.send(Error)
+        } else {
+            if (data == null) {
+                res.send("This book is not available")
+            } else {
+                res.send(data)
+            }
+        }
+
+    })
+}
+exports.deleteBook = async (req, res) => {
+    let delname = req.params.name;
+    Book.findOneAndDelete(({ name: delname }), function (err, data) {
+        res.send(`${data} deleted`)
+    })
 }
