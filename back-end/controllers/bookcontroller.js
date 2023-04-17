@@ -34,19 +34,11 @@ exports.getAuthors = async (req, res) => {
     })
 }
 exports.createStatus = async (req, res) => {
-    BookStatus.create([{
-        name: "Letting Go",
-        status: 2
-    },
-    {
-        name: "Charlotte's Web",
-        status: 3
-    },
-    {
-        name: "The Last Unicorn",
-        status: 0
-    },
-    ])
+
+    BookStatus.create({
+        name: req.body.name,
+        status: req.body.status
+    })
 }
 exports.createAuthor = async (req, res) => {
     Author.create(req.body,
