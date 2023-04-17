@@ -12,7 +12,7 @@ exports.getBooks = async (req, res) => {
             image: book.image,
             desc: book.desc,
             price: book.price,
-            // available: book.available
+            copies: book.copies
         }));
 
         res.send({
@@ -70,14 +70,16 @@ exports.createAuthor = async (req, res) => {
 }
 
 exports.createBooks = async (req, res) => {
-    console.log(req.body)
+
     const data = new Book(
         {
             name: req.body.name,
-            image: req.body.image,
-            desc: req.body.desc,
-            price: req.body.price
-        });
+            image: 'https://upload.wikimedia.org/wikipedia/en/b/b1/Letting_Go_%28novel%29_1st_edition_cover.jpg',
+            desc: `The first full-length novel from one of the most renowned writers of the twentieth century, the Pulitzer Prize winning author of American Pastoral, tells the story of a mid-century America and offers “further proof of Mr. Roth's astonishing talent…. Letting Go seethes with life” (The New York Times).`,
+            price: '$12.00',
+            copies: 4
+        },
+    );
     console.log(data)
     const val = await data.save()
     res.json(val)
