@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { Route, Routes, Navigate, Link } from "react-router-dom"
+
 import BookDisplay from './components/BookDisplay';
 import Author from './components/Author';
 import Header from './components/Header';
@@ -20,14 +20,12 @@ function App() {
       setBooks(data.books);
       setLogin(false)
       setUser(name)
-
-
     }
     catch (error) {
       console.error(error)
     }
   }
-  const [author, setAuthor] = useState('')
+  const [author, setAuthor] = useState([])
   const getAuthor = async (author) => {
     console.log(author)
     try {
@@ -35,6 +33,26 @@ function App() {
       const data = await response.json();
       setAuthor(data.items)
       console.log(data.items)
+    }
+    catch (err) {
+      console.error(err)
+    }
+  }
+
+  const getUser = async (login) => {
+    try {
+      const response = await fetch(`http://localhost:3000/books/users`)
+      const data = await response.json()
+      const name = login.split(' ')[0]
+      const pwd = login.split(' ')[1]
+      const result = data.users.find(user => user.name === name && user.password === pwd)
+      console.log(data)
+      console.log(pwd)
+      if (result) {
+        getBook(name)
+      }
+
+
     }
     catch (err) {
       console.error(err)
@@ -48,7 +66,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {login ? <Login onClick={getBook} /> : <BookDisplay books={books} user={user} getAuthor={getAuthor} />}
+      {login ? <Login onClick={getUser} /> : <BookDisplay books={books} user={user} getAuthor={getAuthor} />}
       {author ? <Author author={author} /> : null}
 
 

@@ -47,20 +47,43 @@ exports.createUser = async (req, res) => {
             res.json(data);
         })
 }
+exports.getUsers = async (req, res) => {
+    User.find({}, (error, allusers) => {
+        const users = allusers.map(user => ({
+            name: user.name,
+            email: user.email,
+            password: user.password
+        }));
+
+        res.send({
+            users
+        });
+    })
+}
 
 exports.createBooks = async (req, res) => {
     const authors = await Author.find({})
-    const data = new Book(
-        {
-            name: req.body.name,
-            author: authors.find(author => author.books.includes(req.body.name))._id,
-            image: req.body.image,
-            desc: req.body.desc,
-            price: req.body.price,
-            copies: req.body.copies
-        },
-    );
-    const val = await data.save()
+    Book.create({
+        name: req.body.name,
+        author: authors.find(author => author.books.includes(req.body.name))._id,
+        image: req.body.image,
+        desc: req.body.desc,
+        price: req.body.price,
+        copies: req.body.copies
+    }, (err, data) => {
+        res.json(data);
+    })
+    // const data = new Book(
+    //     {
+    //         name: req.body.name,
+    //         author: authors.find(author => author.books.includes(req.body.name))._id,
+    //         image: req.body.image,
+    //         desc: req.body.desc,
+    //         price: req.body.price,
+    //         copies: req.body.copies
+    //     },
+    // );
+    // const val = await data.save()
 
 
 

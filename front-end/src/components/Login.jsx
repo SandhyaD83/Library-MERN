@@ -5,7 +5,12 @@ function Login(props) {
     const [pwd, setPwd] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.onClick(name)
+
+        const user = name + ' ' + pwd
+        props.onClick(user)
+
+
+
     }
     return (
         <div><form onSubmit={handleSubmit}>
