@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import { Route, Routes, Navigate, Link } from "react-router-dom"
 import BookDisplay from './components/BookDisplay';
+import Author from './components/Author';
+import Header from './components/Header';
 import Login from './components/Login';
 
 function App() {
@@ -24,17 +27,35 @@ function App() {
       console.error(error)
     }
   }
-
+  const [author, setAuthor] = useState('')
+  const getAuthor = async (author) => {
+    console.log(author)
+    try {
+      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}`)
+      const data = await response.json();
+      setAuthor(data.items)
+      console.log(data.items)
+    }
+    catch (err) {
+      console.error(err)
+    }
+  }
   // useEffect(() => {
   //   getBook();
   // }, []);
 
-
+  console.log(author)
   return (
     <div className="App">
-      {login ? <Login onClick={getBook} /> : <h3>{user}</h3>}
-      <BookDisplay books={books} />
+      <Header />
+      {login ? <Login onClick={getBook} /> : <BookDisplay books={books} user={user} getAuthor={getAuthor} />}
+      {author ? <Author author={author} /> : null}
+
+
+
     </div>
+
+
   );
 }
 

@@ -1,7 +1,6 @@
-.App {
-  text-align: center;
-}
+.App {}
 
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,9 +35,32 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.booksList {
+
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.item {
-  border: solid red;
-  display: flex;
+.book {
+  border: solid;
+  width: 300px;
+  height: 500px;
+  font-size: 16px;
+}
+
+.image {
+  width: 150px;
+  height: 200px;
+  float: left
+}
+
+.header {
+  text-align: center;
+}
+
+.rent {
+  margin-left: 30%;
+  margin-right: 5%;
 }
