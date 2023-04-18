@@ -1,6 +1,6 @@
 const Book = require('../models/book.js')
 const Author = require('../models/author.js');
-const BookStatus = require('../models/bookInstance.js');
+const User = require('../models/user.js');
 const { request } = require('express');
 
 exports.getBooks = async (req, res) => {
@@ -34,17 +34,15 @@ exports.getAuthors = async (req, res) => {
         })
     })
 }
-// exports.createStatus = async (req, res) => {
-//     const books = await Book({})
-//     BookStatus.create({
-//         name:
-//             status: req.body.status
-//     }, (err, data) => {
-//         res.json(data)
-//     })
-// }
+
 exports.createAuthor = async (req, res) => {
     Author.create(req.body,
+        (err, data) => {
+            res.json(data);
+        })
+}
+exports.createUser = async (req, res) => {
+    User.create(req.body,
         (err, data) => {
             res.json(data);
         })
@@ -63,19 +61,7 @@ exports.createBooks = async (req, res) => {
         },
     );
     const val = await data.save()
-    let status = ""
-    if (data.copies > 0) {
-        status = "Available"
-    } else {
-        status = "Not Available"
-    }
-    const bookstatus = new BookStatus(
-        {
-            name: data._id,
-            status: status
-        }
-    )
-    const statusval = await bookstatus.save()
+
 
 
 }

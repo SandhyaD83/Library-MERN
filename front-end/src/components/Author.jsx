@@ -7,8 +7,8 @@ function Author(props) {
             <div >
                 <div >
                     <ul>
-                        <li><h3>{a.volumeInfo.title}</h3></li>
-                        <li>{a.volumeInfo.description}</li>
+                        <li><h3>Title:{a.volumeInfo.title}</h3></li>
+                        <li><h4>Desc:</h4>{a.volumeInfo.description}</li>
                     </ul>
 
 

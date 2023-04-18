@@ -1,4 +1,7 @@
-.App {}
+.App {
+  margin-top: 0;
+  background-color: honeydew;
+}
 
 /*
 .App-logo {
@@ -44,16 +47,17 @@
 }
 
 .book {
-  border: solid;
-  width: 300px;
-  height: 500px;
+  border: solid 1px;
+  width: 400px;
+  height: 600px;
   font-size: 16px;
+  text-align: center;
 }
 
 .image {
   width: 150px;
   height: 200px;
-  float: left
+
 }
 
 .header {
@@ -61,6 +65,6 @@
 }
 
 .rent {
-  margin-left: 30%;
+  margin-left: 5%;
   margin-right: 5%;
 }
