@@ -23,7 +23,14 @@ exports.getBooks = async (req, res) => {
         res.status(500).send({ error: 'Error fetching books.' });
     }
 }
-
+exports.getBook = async (req, res) => {
+    try {
+        const book = await Book.findOne({ name: req.params.name }).populate('author').exec();
+        res.send({ book });
+    } catch (error) {
+        res.status(500).send({ error: 'Internal server error' });
+    }
+};
 exports.createBooks = async (req, res) => {
     const authors = await Author.find({})
     Book.create({

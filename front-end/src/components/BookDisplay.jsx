@@ -12,6 +12,11 @@ function BookDisplay(props) {
     const handleRenew = (bookName) => {
         alert(`You have renewed ${bookName}.`);
     };
+    const submitHandle = (e) => {
+        e.preventDefault();
+        console.log(e.target.search.value)
+        props.searchBook(e.target.search.value)
+    }
     const book = props.books.map((b) => {
         console.log()
         return (
@@ -29,15 +34,18 @@ function BookDisplay(props) {
                     {b.copies > 0 ? <p>Available</p> : <p>Not Available</p>}
                     <button className="rent" onClick={() => handleRent(b.name)}>Rent</button>
                     <button className="renew" onClick={() => handleRenew(b.name)}>Renew</button>
-
-
                 </div>
             </div>
         )
     })
     return (
         <>
+
             <h4 className="user-txt">Logged in as {props.user}</h4>
+            <form onSubmit={submitHandle}>
+                <input type="text" placehoder="search books" name="search" />
+                <button>search</button>
+            </form>
             <div className="booksList">
                 {book}
             </div>

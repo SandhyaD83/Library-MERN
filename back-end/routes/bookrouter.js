@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const { getBooks, createBooks, updateBook, deleteBook, createUser, getUsers } = require('../controllers/bookcontroller.js')
+const { getBooks, getBook, createBooks, updateBook, deleteBook, createUser, getUsers } = require('../controllers/bookcontroller.js')
 
 router.get('/', getBooks)
+router.get('/:name', getBook)
 router.post('/post', createBooks)
 
 router.put('/updateBook/:name', updateBook)

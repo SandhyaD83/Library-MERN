@@ -6,6 +6,7 @@ import Author from './components/Author';
 import Header from './components/Header';
 import Login from './components/Login';
 import Register from './components/Register';
+import Book from './components/Book'
 function App() {
   const [books, setBooks] = useState([])
   const [login, setLogin] = useState(true)
@@ -63,15 +64,33 @@ function App() {
   useEffect(() => {
     getUser();
   });
+  const [book, setBook] = useState('')
+  const searchBook = async (search) => {
+    try {
 
+      const response = await fetch(`http://localhost:3000/books/${search}`)
+
+      const data = await response.json();
+
+      console.log(data)
+      setBook(data);
+
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
   console.log(author)
   return (
     <div className="App">
       <Header />
-      <br />
+
+
       {login ? <Register /> : null}
-      {login ? <Login onLogin={getUser} /> : <BookDisplay books={books} user={user} getAuthor={getAuthor} />}
+      {login ? <Login onLogin={getUser} /> : <BookDisplay books={books} user={user} getAuthor={getAuthor} searchBook={searchBook} />}
+      {book ? <Book book={book} /> : null}
       {author.length > 0 ? <Author author={author} /> : null}
+
     </div>
 
 
