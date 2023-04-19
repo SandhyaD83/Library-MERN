@@ -12,7 +12,12 @@ exports.getBooks = async (req, res) => {
             price: book.price,
             copies: book.copies
         }));
+        console.log(books)
+        // res.render(path.join(__dirname, 'front-end', 'src', 'components', 'Index'), { books: books })
 
+        // res.render('Index', {
+        //     books: books
+        // });
         res.send({
             books
         });

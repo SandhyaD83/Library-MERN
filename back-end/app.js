@@ -5,6 +5,7 @@ const bookrouter = require("./routes/bookrouter.js")
 const authorrouter = require("./routes/authorrouter.js")
 const userrouter = require("./routes/userrouter.js")
 const app = express();
+
 const cors = require('cors');
 
 app.use(cors());
@@ -12,6 +13,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const port = 3000
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 app.use(express.urlencoded({ extended: false }));
 app.use((req, res, next) => {
     console.log('I run for all routes');
