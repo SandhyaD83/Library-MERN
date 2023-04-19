@@ -5,7 +5,7 @@ import BookDisplay from './components/BookDisplay';
 import Author from './components/Author';
 import Header from './components/Header';
 import Login from './components/Login';
-
+import Register from './components/Register';
 function App() {
   const [books, setBooks] = useState([])
   const [login, setLogin] = useState(true)
@@ -68,7 +68,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {login ? <Login onClick={getUser} /> : <BookDisplay books={books} user={user} getAuthor={getAuthor} />}
+      <br />
+      {login ? <Register /> : null}
+      {login ? <Login onLogin={getUser} /> : <BookDisplay books={books} user={user} getAuthor={getAuthor} />}
       {author.length > 0 ? <Author author={author} /> : null}
     </div>
 
