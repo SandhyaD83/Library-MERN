@@ -39,24 +39,33 @@ body {
     transform: rotate(360deg);
   }
 } */
+.user-txt {
+  color: blue;
+  text-align: right
+}
 
 .booksList {
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .book {
-  border: solid 1px;
   width: 400px;
-  height: 600px;
-  font-size: 16px;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 .image {
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  margin: 10px auto;
 
 }
 
@@ -64,7 +73,114 @@ body {
   text-align: center;
 }
 
-.rent {
-  margin-left: 5%;
-  margin-right: 5%;
+.rent,
+.renew {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #008cba;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.rent:hover,
+.renew:hover {
+  background-color: #005a8c;
+}
+
+/* .form {
+  margin-top: 10%;
+  margin-left: 35%;
+  border: solid;
+  width: 45vh;
+  height: 50vh
+} */
+
+.author-link {
+  background-color: transparent;
+  border: none;
+  color: #008cba;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.author-link:hover {
+  color: #005a8c;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.form input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #3e8e41;
+}
+
+
+
+.author-container {
+  /* margin-top: 50px; */
+  text-align: center;
+  margin: 20px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.author-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: red
+}
+
+.author-list {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.author-list div {
+  background-color: #f2f2f2;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.author-list ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.author-list li {
+  margin: 10px;
 }

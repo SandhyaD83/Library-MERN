@@ -51,26 +51,25 @@ function App() {
       if (result) {
         getBook(name)
       }
-
+      else {
+        alert('User name or Password incorrect');
+      }
 
     }
     catch (err) {
       console.error(err)
     }
   }
-  // useEffect(() => {
-  //   getBook();
-  // }, []);
+  useEffect(() => {
+    getUser();
+  });
 
   console.log(author)
   return (
     <div className="App">
       <Header />
       {login ? <Login onClick={getUser} /> : <BookDisplay books={books} user={user} getAuthor={getAuthor} />}
-      {author ? <Author author={author} /> : null}
-
-
-
+      {author.length > 0 ? <Author author={author} /> : null}
     </div>
 
 
