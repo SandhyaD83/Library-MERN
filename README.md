@@ -1,23 +1,28 @@
-# Getting Started with Create React App
+#Project Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Library-MERN project is a web application that allows users to rent books and user can  search for books using book name
 
-## Available Scripts
+##Technologies Used
 
-In the project directory, you can run:
+MongoDB, 
+Express, 
+React, 
+Node.js
 
-### `npm start`
+### Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Clone the repository: git clone https://github.com/SandhyaD83/Library-MERN.git.
+Install dependencies for the client: cd fron-end && npm install.
+Install dependencies for the server: cd .. && npm install.
+Start the server: cd .. && npm run backend and split the terminal and cd fron-end && npm start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Register an account by clicking on "Register" and filling out the form.
+Log in to your account by clicking on "Login" and entering your credentials.
+Use the search bar to search for books by by bookname.
+Click on author name to get the list of other books from the author
 
 ### `npm run build`
 
