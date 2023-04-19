@@ -1,8 +1,5 @@
 const Book = require('../models/book.js')
 const Author = require('../models/author.js');
-const User = require('../models/user.js');
-const { request } = require('express');
-
 exports.getBooks = async (req, res) => {
     try {
         const allBooks = await Book.find({}).populate('author').exec();
@@ -26,41 +23,6 @@ exports.getBooks = async (req, res) => {
     }
 }
 
-
-exports.getAuthors = async (req, res) => {
-    Author.find({}, (error, allauthors) => {
-        res.send({
-            allauthors
-        })
-    })
-}
-
-exports.createAuthor = async (req, res) => {
-    Author.create(req.body,
-        (err, data) => {
-            res.json(data);
-        })
-}
-exports.createUser = async (req, res) => {
-    User.create(req.body,
-        (err, data) => {
-            res.json(data);
-        })
-}
-exports.getUsers = async (req, res) => {
-    User.find({}, (error, allusers) => {
-        const users = allusers.map(user => ({
-            name: user.name,
-            email: user.email,
-            password: user.password
-        }));
-
-        res.send({
-            users
-        });
-    })
-}
-
 exports.createBooks = async (req, res) => {
     const authors = await Author.find({})
     Book.create({
@@ -73,19 +35,6 @@ exports.createBooks = async (req, res) => {
     }, (err, data) => {
         res.json(data);
     })
-    // const data = new Book(
-    //     {
-    //         name: req.body.name,
-    //         author: authors.find(author => author.books.includes(req.body.name))._id,
-    //         image: req.body.image,
-    //         desc: req.body.desc,
-    //         price: req.body.price,
-    //         copies: req.body.copies
-    //     },
-    // );
-    // const val = await data.save()
-
-
 
 }
 exports.updateBook = async (req, res) => {

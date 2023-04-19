@@ -41,7 +41,7 @@ function App() {
 
   const getUser = async (login) => {
     try {
-      const response = await fetch(`http://localhost:3000/books/users`)
+      const response = await fetch(`http://localhost:3000/users`)
       const data = await response.json()
       const name = login.split(' ')[0]
       const pwd = login.split(' ')[1]
