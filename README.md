@@ -1,8 +1,8 @@
-# Project Description
+### Project Description
 
 The Library-MERN project is a web application that allows users to rent books and user can  search for books using book name
 
-## Technologies Used
+### Technologies Used
 
 MongoDB, 
 Express, 
