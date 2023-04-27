@@ -12,9 +12,9 @@ Node.js
 ### Installation
 
 Clone the repository: git clone https://github.com/SandhyaD83/Library-MERN.git.
-Install dependencies for the client: cd fron-end && npm install.
+Install dependencies for the client: cd front-end && npm install.
 Install dependencies for the server: cd .. && npm install.
-Start the server: cd .. && npm run backend and split the terminal and cd fron-end && npm start
+Start the server: cd .. && npm run backend and split the terminal and cd front-end && npm start
 
 
 ### Usage
